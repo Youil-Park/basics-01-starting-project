@@ -1,6 +1,7 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+// 입력 필드에서부터 사용자 입력을 가져오는 함수
 function getUserNumberInput() {
     return parseInt(userInput.value);
 }
@@ -8,14 +9,14 @@ function getUserNumberInput() {
 // 연산
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
     const calcDescription = `${currentResult} ${operator} ${calcNumber}`;
-    outputResult(currentResult, calcDescription);
+    outputResult(currentResult, calcDescription);   // from vendor file
 }
 
 // 덧셈
 function add(){
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    currentResult = currentResult + enteredNumber;
+    currentResult += enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
 }
 
@@ -23,7 +24,7 @@ function add(){
 function subtract() {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    currentResult = currentResult - enteredNumber;
+    currentResult -= enteredNumber;
     createAndWriteOutput('-', initialResult, enteredNumber);
 }
 
@@ -31,7 +32,7 @@ function subtract() {
 function multiply() {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    currentResult = currentResult * enteredNumber;
+    currentResult *=  enteredNumber;
     createAndWriteOutput('*', initialResult, enteredNumber);
 }
 
@@ -39,7 +40,7 @@ function multiply() {
 function divide () {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    currentResult = currentResult / enteredNumber;
+    currentResult /= enteredNumber;
     createAndWriteOutput('/', initialResult, enteredNumber);
 }
 
