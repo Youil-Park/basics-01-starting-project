@@ -1,5 +1,6 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = []; // 로그
 
 // 입력 필드에서부터 사용자 입력을 가져오는 함수
 function getUserNumberInput() {
@@ -18,6 +19,8 @@ function add(){
     const initialResult = currentResult;
     currentResult += enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
+    logEntries.push(enteredNumber); // 사용자가 입력한 값을 저장(로그)
+    console.log(logEntries[1]);
 }
 
 // 뺄셈
