@@ -25,7 +25,8 @@ function add(){
         number: enteredNumber,      // 더해 줄 숫자
         result : currentResult      // 합계
     };    // 오브젝트
-    logEntries.push(logEntry);      // 사용자가 입력한 값을 저장(로그)
+    logEntries.push(logEntry);          // 사용자가 입력한 값을 저장(로그)
+    console.log(logEntry.operation);    // 객체 데이터 엑세스 하기
     console.log(logEntries);
 }
 
