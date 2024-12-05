@@ -19,8 +19,14 @@ function add(){
     const initialResult = currentResult;
     currentResult += enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
-    logEntries.push(enteredNumber); // 사용자가 입력한 값을 저장(로그)
-    console.log(logEntries[1]);
+    const logEntry = {
+        operation: 'ADD',
+        prevResult: initialResult,  // 연산 전 결과
+        number: enteredNumber,      // 더해 줄 숫자
+        result : currentResult      // 합계
+    };    // 오브젝트
+    logEntries.push(logEntry);      // 사용자가 입력한 값을 저장(로그)
+    console.log(logEntries);
 }
 
 // 뺄셈
