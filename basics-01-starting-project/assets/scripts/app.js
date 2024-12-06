@@ -9,8 +9,24 @@ function getUserNumberInput() {
 
 // 연산
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
-    const calcDescription = `${currentResult} ${operator} ${calcNumber}`;
+    const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
     outputResult(currentResult, calcDescription);   // from vendor file
+}
+
+function writeToLog(
+    operationIdentifier,    // 기호
+    prevResult,             // 연산 전 결과
+    operationNumber,        // 더해 줄 숫자
+    newResult               // 합계
+) {
+    const logEntry = {
+        operation: operationIdentifier,
+        prevResult: prevResult,  // 연산 전 결과
+        number: operationNumber,      // 더해 줄 숫자
+        result : newResult      // 합계
+    };    // 오브젝트
+    logEntries.push(logEntry);          // 사용자가 입력한 값을 저장(로그)
+    console.log(logEntries);
 }
 
 // 덧셈
@@ -19,15 +35,7 @@ function add(){
     const initialResult = currentResult;
     currentResult += enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
-    const logEntry = {
-        operation: 'ADD',
-        prevResult: initialResult,  // 연산 전 결과
-        number: enteredNumber,      // 더해 줄 숫자
-        result : currentResult      // 합계
-    };    // 오브젝트
-    logEntries.push(logEntry);          // 사용자가 입력한 값을 저장(로그)
-    console.log(logEntry.operation);    // 객체 데이터 엑세스 하기
-    console.log(logEntries);
+    writeToLog('ADD', initialResult, enteredNumber, currentResult);
 }
 
 // 뺄셈
@@ -36,6 +44,7 @@ function subtract() {
     const initialResult = currentResult;
     currentResult -= enteredNumber;
     createAndWriteOutput('-', initialResult, enteredNumber);
+    writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
 }
 
 // 곱하기
@@ -44,6 +53,7 @@ function multiply() {
     const initialResult = currentResult;
     currentResult *=  enteredNumber;
     createAndWriteOutput('*', initialResult, enteredNumber);
+    writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
 }
 
 // 나누기
@@ -52,6 +62,7 @@ function divide () {
     const initialResult = currentResult;
     currentResult /= enteredNumber;
     createAndWriteOutput('/', initialResult, enteredNumber);
+    writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
 }
 
 addBtn.addEventListener('click', add);
