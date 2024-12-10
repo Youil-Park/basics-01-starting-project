@@ -4,7 +4,7 @@ let logEntries = []; // 로그
 
 // 입력 필드에서부터 사용자 입력을 가져오는 함수
 function getUserNumberInput() {
-    return userInput.value;
+    return parseInt(userInput.value);
 }
 
 // 연산
