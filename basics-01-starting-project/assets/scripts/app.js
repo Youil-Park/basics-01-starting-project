@@ -4,7 +4,7 @@ let logEntries = []; // 로그
 
 // 입력 필드에서부터 사용자 입력을 가져오는 함수
 function getUserNumberInput() {
-    return parseInt(userInput.value);
+    return userInput.value;
 }
 
 // 연산
@@ -33,6 +33,7 @@ function writeToLog(
 function add(){
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
+    console.log('INPUT',enteredNumber, currentResult);      // 콘솔
     currentResult += enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
     writeToLog('ADD', initialResult, enteredNumber, currentResult);
