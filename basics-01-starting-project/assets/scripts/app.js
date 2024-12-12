@@ -29,41 +29,49 @@ function writeToLog(
     console.log(logEntries);
 }
 
-// 덧셈
-function add(){
+
+// if 강의
+function calculateResult(calculationType) {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    console.log('INPUT',enteredNumber, currentResult);      // 콘솔
-    currentResult += enteredNumber;
-    createAndWriteOutput('+', initialResult, enteredNumber);
-    writeToLog('ADD', initialResult, enteredNumber, currentResult);
+    let mathOperator;   // 연산자
+
+    if (calculationType === 'ADD') {            // 덧셈
+        currentResult += enteredNumber;
+        mathOperator = '+';
+    } else if(calculationType === 'SUBTRACT') { // 빼기
+        currentResult -= enteredNumber;
+        mathOperator = '-';
+    } else if(calculationType === 'MULTIPLY') { // 곱하기
+        currentResult *=  enteredNumber;
+        mathOperator = '*';
+    } else if(calculationType === 'DIVIDE'){    // 나누기
+        currentResult /= enteredNumber;
+        mathOperator = '/';
+    }
+
+    createAndWriteOutput(mathOperator, initialResult, enteredNumber);            // 연산기호
+    writeToLog(calculationType, initialResult, enteredNumber, currentResult);   // 계산 유형
+}
+
+// 덧셈
+function add(){
+    calculateResult('ADD');
 }
 
 // 뺄셈
 function subtract() {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult -= enteredNumber;
-    createAndWriteOutput('-', initialResult, enteredNumber);
-    writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
+   calculateResult('SUBTRACT');
 }
 
 // 곱하기
 function multiply() {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult *=  enteredNumber;
-    createAndWriteOutput('*', initialResult, enteredNumber);
-    writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
+    calculateResult('MULTIPLY');
 }
 
 // 나누기
 function divide () {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult /= enteredNumber;
-    createAndWriteOutput('/', initialResult, enteredNumber);
-    writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
+    calculateResult('DIVIDE');
 }
 
 addBtn.addEventListener('click', add);
