@@ -32,26 +32,44 @@ function writeToLog(
 
 // if 강의
 function calculateResult(calculationType) {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    let mathOperator;   // 연산자
-
-    if (calculationType === 'ADD') {            // 덧셈
-        currentResult += enteredNumber;
-        mathOperator = '+';
-    } else if(calculationType === 'SUBTRACT') { // 빼기
-        currentResult -= enteredNumber;
-        mathOperator = '-';
-    } else if(calculationType === 'MULTIPLY') { // 곱하기
-        currentResult *=  enteredNumber;
-        mathOperator = '*';
-    } else if(calculationType === 'DIVIDE'){    // 나누기
-        currentResult /= enteredNumber;
-        mathOperator = '/';
+    
+    if (
+        calculationType !== 'ADD' && 
+        calculationType !== 'SUBTRACT' &&
+        calculationType !== 'MULTIPLY' &&
+        calculationType !== 'DIVIDE'
+    ) {
+            return;
     }
+    
+    // if (
+    //     calculationType === 'ADD' ||
+    //     calculationType === 'SUBTRACT' ||
+    //     calculationType === 'MULTIPLY' ||
+    //     calculationType === 'DIVIDE'
+    // ){
+        const enteredNumber = getUserNumberInput();
+        const initialResult = currentResult;
+        let mathOperator;   // 연산자
+    
+        if (calculationType === 'ADD') {            // 덧셈
+            currentResult += enteredNumber;
+            mathOperator = '+';
+        } else if(calculationType === 'SUBTRACT') { // 빼기
+            currentResult -= enteredNumber;
+            mathOperator = '-';
+        } else if(calculationType === 'MULTIPLY') { // 곱하기
+            currentResult *=  enteredNumber;
+            mathOperator = '*';
+        } else if(calculationType === 'DIVIDE'){    // 나누기
+            currentResult /= enteredNumber;
+            mathOperator = '/';
+        }
+    
+        createAndWriteOutput(mathOperator, initialResult, enteredNumber);            // 연산기호
+        writeToLog(calculationType, initialResult, enteredNumber, currentResult);   // 계산 유형
+  //  }
 
-    createAndWriteOutput(mathOperator, initialResult, enteredNumber);            // 연산기호
-    writeToLog(calculationType, initialResult, enteredNumber, currentResult);   // 계산 유형
 }
 
 // 덧셈
