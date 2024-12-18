@@ -32,12 +32,13 @@ function writeToLog(
 
 // if 강의
 function calculateResult(calculationType) {
-    
+    const enteredNumber = getUserNumberInput();
     if (
         calculationType !== 'ADD' && 
         calculationType !== 'SUBTRACT' &&
         calculationType !== 'MULTIPLY' &&
-        calculationType !== 'DIVIDE'
+        calculationType !== 'DIVIDE' ||
+        !enteredNumber  // 입력된 값이 0이 아니면
     ) {
             return;
     }
@@ -48,7 +49,6 @@ function calculateResult(calculationType) {
     //     calculationType === 'MULTIPLY' ||
     //     calculationType === 'DIVIDE'
     // ){
-        const enteredNumber = getUserNumberInput();
         const initialResult = currentResult;
         let mathOperator;   // 연산자
     
